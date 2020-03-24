@@ -8,6 +8,8 @@ class Artwork < ApplicationRecord
     has_many :shared_viewers, 
         through: :artwork_shares, 
         source: :viewer
+    has_many :comments,
+        dependent: :destroy
 
     # class method that returns all of the artworks made by the user OR shared with the user
     def self.artworks_for_user_id(user_id)
