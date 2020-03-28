@@ -13,5 +13,16 @@ class User < ApplicationRecord
     has_many :comments,
         foreign_key: :user_id,
         dependent: :destroy
+    has_many :likes
+    has_many :liked_comments,
+        through: :likes,
+        source: :likeable,
+        source_type: 'Comment'
+    has_many :liked_artworks,
+        through: :likes,
+        source: :likeable,
+        source_type: 'Artwork'
 
 end
+
+

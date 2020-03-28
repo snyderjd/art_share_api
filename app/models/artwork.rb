@@ -10,6 +10,7 @@ class Artwork < ApplicationRecord
         source: :viewer
     has_many :comments,
         dependent: :destroy
+    has_many :likes, as: :likeable
 
     # class method that returns all of the artworks made by the user OR shared with the user
     def self.artworks_for_user_id(user_id)
